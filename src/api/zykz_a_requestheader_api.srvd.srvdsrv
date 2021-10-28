@@ -1,0 +1,5 @@
+@EndUserText.label: 'Request API'
+define service ZYKZ_A_RequestHeader_API {
+  expose ZYKZ_A_RequestHeaderTP;
+  expose ZYKZ_A_RequestItemTP;
+}

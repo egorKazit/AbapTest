@@ -1,0 +1,37 @@
+managed implementation in class zcl_YKZ_R_RequestHeaderTP unique;
+with draft;
+
+define behavior for ZYKZ_R_RequestHeaderTP alias RequestHeader
+persistent table zykz_lx_request
+draft table zykz_lx_requestd
+lock master
+total etag Priority
+early numbering
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+  action ( features : instance ) UpdateRecieverFlag;
+  action ( features : instance ) Submit result [1] $self;
+  action ( features : instance ) Approve;
+  action ( features : instance ) Reject;
+  field ( readonly ) RequestID, RequestStatus;
+  determination setId on save { create; }
+  determination setInitialStatus on save { create; }
+  association _RequestItem { create; }
+}
+
+define behavior for ZYKZ_R_RequestItemTP alias RequestItem
+implementation in class zcl_YKZ_R_RequestItemTP unique
+persistent table zykz_lx_reqitem
+draft table zykz_lx_reqitemd
+lock dependent by _RequestHeader
+early numbering
+authorization dependent by _RequestHeader
+{
+  update;
+  delete;
+  field ( readonly ) HeaderUUID;
+  association _RequestHeader;
+}

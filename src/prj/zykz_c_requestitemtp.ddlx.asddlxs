@@ -1,0 +1,38 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+  headerInfo: {
+    typeName: 'Request',
+    typeNamePlural: 'Request',
+    title: { type: #STANDARD, value: '_RequestHeader.RequestName' },
+    description:{ type: #STANDARD, value: 'ItemName' }
+        }
+    }
+
+annotate view ZYKZ_C_RequestItemTP with
+{
+
+  @UI.facet: [ { id:              'GeneralData',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'General Data',
+                 position:        10 }]
+
+  @UI.hidden: true
+  UUID;
+  @UI.hidden: true
+  HeaderUUID;
+
+  @UI: {
+          lineItem:       [ { position: 10, importance: #HIGH, label: 'Name' } ],
+          identification: [ { position: 10, label: 'Name' } ],
+          selectionField: [ { position: 10, element: 'ItemName'} ] }
+  ItemName;
+
+  @UI: {
+        lineItem:       [ { position: 20, importance: #HIGH, label: 'Description'} ],
+        identification: [ { position: 20, label: 'Description' } ] }
+  Description;
+  //  RequisitionCount;
+
+}

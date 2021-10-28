@@ -1,0 +1,5 @@
+@EndUserText.label: 'Request Serv Definition'
+define service ZRquestHeaderSDef {
+  expose ZYKZ_C_RequestHeaderTP as RequestHeader;
+  expose ZYKZ_C_RequestItemTP as RequestItem;
+}
