@@ -11,7 +11,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_ykz_requset_service IMPLEMENTATION.
+CLASS ZCL_YKZ_REQUSET_SERVICE IMPLEMENTATION.
 
 
   METHOD if_http_service_extension~handle_request.
